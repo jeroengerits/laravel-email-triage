@@ -1,0 +1,72 @@
+{
+  "name": "jeroengerits/laravel-email-triage",
+  "description": "A reusable Laravel package for triaging emails into urgency, action type, category, sentiment, and spam status.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "email",
+    "laravel",
+    "package",
+    "triage"
+  ],
+  "require": {
+    "php": "^8.4",
+    "illuminate/contracts": "^13.0",
+    "illuminate/support": "^13.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^11.0",
+    "pestphp/pest": "^4.0",
+    "pestphp/pest-plugin-laravel": "^4.0",
+    "laravel/pint": "^1.29",
+    "rector/rector": "^2.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "JeroenGerits\\EmailTriage\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JeroenGerits\\EmailTriage\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "qa": [
+      "@lint",
+      "@test"
+    ],
+    "lint": [
+      "vendor/bin/pint --test",
+      "vendor/bin/rector process --dry-run"
+    ],
+    "refactor": [
+      "vendor/bin/pint",
+      "vendor/bin/rector process",
+      "vendor/bin/pint"
+    ],
+    "test": "vendor/bin/pest",
+    "test:unit": "vendor/bin/pest tests/Unit",
+    "test:feature": "vendor/bin/pest tests/Feature"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "JeroenGerits\\EmailTriage\\EmailTriageServiceProvider"
+      ],
+      "aliases": {
+        "EmailTriage": "JeroenGerits\\EmailTriage\\Facades\\EmailTriage"
+      }
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
