@@ -5,6 +5,7 @@
 /.php-cs-fixer.cache
 /.phpactor.json
 /.rector/
+/docs/superpowers/
 
 /.DS_Store
 
